@@ -13,4 +13,9 @@ export class UserController {
     register(@Body() user: CreateUserDTO): Promise<User> {
         return this.userService.create(user)
     }
+
+    @Get('/')
+    getUsers(): Promise<User[]>{
+        return this.userService.getUsers()
+    }
 }

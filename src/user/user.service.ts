@@ -21,4 +21,9 @@ export class UserService {
         this.userRepository.save(newUser)
         return newUser
     }
+
+    async getUsers(): Promise<User[]>{
+        const users = this.userRepository.find()
+        return users
+    }
 }
