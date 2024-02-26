@@ -26,4 +26,9 @@ export class UserService {
         const users = this.userRepository.find()
         return users
     }
+
+    async getUserById(id: string): Promise<User>{
+        const user = this.userRepository.findOneBy({id})
+        return user
+    }
 }
