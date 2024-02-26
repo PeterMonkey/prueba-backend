@@ -28,4 +28,9 @@ export class UserController {
     updateUser(@Param('id') id: string, @Body() data: CreateUserDTO): Promise<void>{
         return this.userService.updateUser(id, data)
     }
+
+    @Delete('/:id')
+    deleteUser(@Param('id') id: string): Promise<void>{
+        return this.userService.deleteUser(id)
+    }
 }
