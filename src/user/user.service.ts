@@ -10,10 +10,11 @@ export class UserService {
     constructor( @InjectRepository(User) private userRepository: UserRepository ){}
 
     async create(user: CreateUserDTO): Promise<User>{
-        const { name, password, role } = user
+        const { name, email, password, role } = user
         const hash = await bcrypt.hash(password, 10)
         const newUser = this.userRepository.create({
             name,
+            email,
             password: hash,
             role
         })

@@ -3,13 +3,13 @@ import { UserService } from './user.service';
 import { CreateUserDTO } from './dto/user.dto';
 import { User } from './entity/user.entity';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
     constructor(
         private userService: UserService
     ){}
     
-    @Post('/register')
+    @Post('/')
     register(@Body() user: CreateUserDTO): Promise<User> {
         return this.userService.create(user)
     }
