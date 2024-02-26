@@ -1,7 +1,8 @@
-import { Controller, Body, Post, Get, Put, Delete, Param } from '@nestjs/common';
+import { Controller, Body, Post, Get, Put, Delete, Param, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDTO } from './dto/user.dto';
 import { User } from './entity/user.entity';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('users')
 export class UserController {
@@ -14,6 +15,7 @@ export class UserController {
         return this.userService.create(user)
     }
 
+    @UseGuards(AuthGuard)
     @Get('/')
     getUsers(): Promise<User[]>{
         return this.userService.getUsers()
